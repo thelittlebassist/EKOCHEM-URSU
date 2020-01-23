@@ -13,22 +13,10 @@
 	<body>
 		<div class="container-fluid">
 			<?php
-				/* config pod PDO i OOP */
-	          define('DB_SERVER', 'localhost\SQLEXPRESS');
-	          define('DB_USERNAME', 'Rysiu');
-	          define('DB_PASSWORD', '@sql^local1249');
-	          define('DB_NAME', 'Rejestr_Zakupow');
-	          try {
-	              $pdo = new PDO("sqlsrv:Server=" . DB_SERVER . ";Database=" . DB_NAME, DB_USERNAME, DB_PASSWORD);
-	              // Set the PDO error mode to exception
-	              $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	          } catch (PDOException $e) {
-	              die("ERROR: Could not connect. " . $e->getMessage());
-	          }
+				include('core/config.php');
 
-				$sql = "UPDATE dbo.Zamowienie Id_order,Opis,Dostawca,NumZamDost,DataZamowienia,StatusZam,DataDost,StatusFaktury,NrFaktury,Komentarz
+				$sql = "UPDATE Zamowienie
 							SET
-								Id_order = :Id_order,
 								Opis = :Opis,
 								Dostawca = :Dostawca,
 								NumZamDost = :NumZamDost,
@@ -55,7 +43,7 @@
 				try {
 		            $pdo->prepare($sql)->execute($data);
 		            echo '<div class="alert alert-success">';
-		            echo "Zamówienie zostało zedytowane <br> <a class='btn btn-outline-dark btn-sm'  href='http://localhost/Zamowiania_strona_30_1.php'>Lista zamówień</a>";
+		            echo "Zamówienie zostało zedytowane <br> <a class='btn btn-outline-dark btn-sm'  href='http://localhost/Zamowienia_strona.php'>Lista zamówień</a>";
 		            echo '</div>';
 		            die ("");
         	}
@@ -63,7 +51,7 @@
 		            echo '<div class="alert alert-warning">';
 		            echo 'Exception -> ';
 		            echo ($e->getMessage());
-		            die("<br>Coś poszło nie tak z zapisem  <br> <a class='btn btn-outline-dark btn-sm'  href='http://localhost/Zamowiania_strona_30_1.php'>Lista zamówień</a> ;(</div>");
+		            die("<br>Coś poszło nie tak z zapisem  <br> <a class='btn btn-outline-dark btn-sm'  href='http://localhost/Zamowienia_strona.php'>Lista zamówień</a></div>");
 		        	}
 			?>
 		</div>
