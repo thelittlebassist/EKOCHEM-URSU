@@ -13,18 +13,8 @@
   <form action="save_edit.php" name="frmEdit" method="POST">
       <table border="1" style="font-size:14px" class="table table-striped table-hover">
   <?php
-            /* config pod PDO i OOP */
-          define('DB_SERVER', 'localhost\SQLEXPRESS');
-          define('DB_USERNAME', 'Rysiu');
-          define('DB_PASSWORD', '@sql^local1249');
-          define('DB_NAME', 'Rejestr_Zakupow');
-          try {
-              $pdo = new PDO("sqlsrv:Server=" . DB_SERVER . ";Database=" . DB_NAME, DB_USERNAME, DB_PASSWORD);
-              // Set the PDO error mode to exception
-              $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-          } catch (PDOException $e) {
-              die("ERROR: Could not connect. " . $e->getMessage());
-          }
+          include('core/config.php');
+          
             $sql = "select * from Zamowienie where Id_order = :Id_order";
               if ($stmt = $pdo->prepare($sql)) {
                  if ($stmt->execute(array(':Id_order'=>trim($_GET['Id_order'])))) {
