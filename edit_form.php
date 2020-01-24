@@ -10,12 +10,12 @@
   </head>
 
  <body>
-  <form action="save_edit.php" name="frmEdit" method="POST">
+  <form action="save_edit.php" method="POST">
       <table border="1" style="font-size:14px" class="table table-striped table-hover">
   <?php
           include('core/config.php');
-          
-            $sql = "select * from Zamowienie where Id_order = :Id_order";
+
+            $sql = "select Id_order, Opis, Dostawca, NumZamDost,DataZamowienia,StatusZam,DataDost,StatusFaktury,NrFaktury,Komentarz from Zamowienie where Id_order = :Id_order";
               if ($stmt = $pdo->prepare($sql)) {
                  if ($stmt->execute(array(':Id_order'=>trim($_GET['Id_order'])))) {
                   }
@@ -24,7 +24,7 @@
               {
                print '<tr>';
                print '<th width="120">Id</th>';
-               print '<td>' . $row["Id_order"] . '</td>';
+               print '<td><input type="hidden" name="Id_order" size="100" value="' . $row["Id_order"] . '">' . $row["Id_order"] . '</td>';
                print '</tr>';
                print '<tr>';
                print '<th width="120">Opis</th>';
@@ -63,6 +63,8 @@
                print '<td><input type="text" name="Komentarz" size="100" value="' . $row["Komentarz"] . '"></td>';
                print '</tr>';
               }
+              print_r($row);
+             sqlsrv_close($conn);
         ?>
       </table>
       <input type="submit" name="submit" value="submit"/>
