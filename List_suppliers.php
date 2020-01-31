@@ -47,7 +47,7 @@
             	 print "  <td>" . $row["Adres"] . "<br>";
             	 print "  <td>" . $row["mail"] . "<br>";
             	 print "  <td>" . $row["website"] . "<br>";
-               print " <td><a class='btn btn-outline-dark btn-sm'  href='edit_form_dostawcy.php?Id_supplier=".$row['Id_supplier']."'>Edytuj</a>
+               print " <td><a class='btn btn-outline-dark btn-sm'  href='edit_supplier_form.php?Id_supplier=".$row['Id_supplier']."'>Edytuj</a>
                             <a class='btn btn-outline-dark btn-sm'  href='delete_supplier.php?Id_supplier=".$row['Id_supplier']."'>Usuń</a><br>";
                print "</tr>";
               }
