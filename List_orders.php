@@ -56,7 +56,7 @@
             	 print "  <td>" . $row["StatusFaktury"] . "<br>";
             	 print "  <td>" . $row["NrFaktury"] . "<br>";
             	 print "  <td>" . $row["Komentarz"] . "<br>";
-               print " <td><a class='btn btn-outline-dark btn-sm'  href='edit_form.php?Id_order=".$row['Id_order']."'>Edytuj</a>
+               print " <td><a class='btn btn-outline-dark btn-sm'  href='edit_orders_form.php?Id_order=".$row['Id_order']."'>Edytuj</a>
                             <a class='btn btn-outline-dark btn-sm'  href='delete_order.php?Id_order=".$row['Id_order']."'>Usuń</a><br>";
                print "</tr>";
               }
@@ -65,7 +65,7 @@
         ?>
       </table>
       <form>
-        <input type="button" value="Dodaj Zamówienie" onclick="window.location.href='http://localhost/add_form.php'" />
+        <input type="button" value="Dodaj Zamówienie" onclick="window.location.href='http://localhost/add_orders_form.php'" />
       </form> 
     </div>
   </body>
