@@ -21,7 +21,7 @@
 				try {
 		            $pdo->prepare($sql)->execute($data);
 		            echo '<div class="alert alert-success">';
-		            echo "Zamówienie zostało usunięte <br> <a class='btn btn-outline-dark btn-sm'  href='http://localhost/Zamowienia_strona.php'>Lista zamówień</a>";
+		            echo "Zamówienie zostało usunięte <br> <a class='btn btn-outline-dark btn-sm'  href='http://localhost/List_orders.php'>Lista zamówień</a>";
 		            echo '</div>';
 		            die ("");
         	}
@@ -29,7 +29,7 @@
 		            echo '<div class="alert alert-warning">';
 		            echo 'Exception -> ';
 		            echo ($e->getMessage());
-		            die("<br>Coś poszło nie tak z usuwaniem  <br> <a class='btn btn-outline-dark btn-sm'  href='http://localhost/Zamowienia_strona.php'>Lista zamówień</a></div>");
+		            die("<br>Coś poszło nie tak z usuwaniem  <br> <a class='btn btn-outline-dark btn-sm'  href='http://localhost/List_orders.php'>Lista zamówień</a></div>");
 		        	}
 			?>
 		</div>
