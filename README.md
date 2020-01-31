@@ -5,14 +5,14 @@ Drzewo:
               
               * Home.php
 
-              * Zamowienia_strona.php
-                - add_form.php -> save.php
-                - edit_form.php -> save_edit.php
+              * List_orders.php
+                - add_orders_form.php -> add_orders_save.php
+                - edit_orders_form.php -> edit_orders_save.php
                 - delete_order.php
 
-              * Dostawcy_lista.php
+              * List_suppliers.php
                 - Add_supplier_form.php -> Add_supplier_save.php
-                - edit_form_dostawcy.php -> save_edit_dostawcy.php
+                - edit_supplier_form.php -> edit_supplier_save.php
                 - delete_supplier.php
 
               *[core]

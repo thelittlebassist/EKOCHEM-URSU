@@ -27,7 +27,7 @@
       <input type="submit" name="submit" value="submit">
     </form>
     <form>
-        <input type="button" value="Powrót" onclick="window.location.href='http://localhost/Dostawcy_lista.php'" />
+        <input type="button" value="Powrót" onclick="window.location.href='http://localhost/List_suppliers.php'" />
       </form> 
   </body>
 </html>

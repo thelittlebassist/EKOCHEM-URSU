@@ -5,7 +5,7 @@
   </head>
 
  <body>
-  <form action="save_edit_dostawcy.php" method="POST">
+  <form action="edit_supplier_save.php" method="POST">
       <table border="1" style="font-size:14px" class="table table-striped table-hover">
   <?php
           include('core/config.php');
@@ -46,7 +46,7 @@
       <input type="submit" name="submit" value="submit"/>
     </form>
      <form>
-        <input type="button" value="Powrót" onclick="window.location.href='http://localhost/Dostawcy_lista.php'" />
+        <input type="button" value="Powrót" onclick="window.location.href='http://localhost/List_suppliers.php'" />
       </form> 
   </body>
 </html>

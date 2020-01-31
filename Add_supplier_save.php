@@ -27,7 +27,7 @@
 				try {
             $pdo->prepare($sql)->execute($data);
             echo '<div class="alert alert-success">';
-            echo "Dodano nowe zamówienie <br> <a class='btn btn-outline-dark btn-sm'  href='http://localhost/Dostawcy_lista.php'>Lista dostawców</a>";
+            echo "Dodano nowe zamówienie <br> <a class='btn btn-outline-dark btn-sm'  href='http://localhost/List_suppliers.php'>Lista dostawców</a>";
             echo '</div>';
             die ("");
         	}
@@ -35,7 +35,7 @@
             echo '<div class="alert alert-warning">';
             echo 'Exception -> ';
             echo ($e->getMessage());
-            die("<br>Coś poszło nie tak  ;( <br> <a class='btn btn-outline-dark btn-sm'  href='http://localhost/Dostawcy_lista.php'>Lista dostawców</a></div>");
+            die("<br>Coś poszło nie tak  ;( <br> <a class='btn btn-outline-dark btn-sm'  href='http://localhost/List_suppliers.php'>Lista dostawców</a></div>");
         	}
 			?>
 		</div>

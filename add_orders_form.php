@@ -4,7 +4,7 @@
       <?php include('core/bootstrap.php');?>
   </head>
   <body>
-    <form action="save.php" name="frmAdd" method="post">
+    <form action="add_orders_save.php" name="frmAdd" method="post">
       <table border="1" style="font-size:14px" class="table table-striped table-hover">
         <tr>
           <th width="120">Opis</th>
@@ -47,7 +47,7 @@
       <input type="submit" name="submit" value="submit">
     </form>
     <form>
-        <input type="button" value="Powrót" onclick="window.location.href='http://localhost/Zamowienia_strona.php'" />
+        <input type="button" value="Powrót" onclick="window.location.href='http://localhost/List_orders.php'" />
       </form> 
   </body>
 </html>
