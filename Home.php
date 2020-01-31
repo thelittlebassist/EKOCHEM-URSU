@@ -1,7 +1,7 @@
 <html>
 
   <head>
-    <title>Dział IT - Strona główna</title>
+    <title>Dział IT - Strona główna TEST3</title>
     <?php include('core/bootstrap.php');?>
 
   </head>
