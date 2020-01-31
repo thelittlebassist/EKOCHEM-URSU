@@ -5,7 +5,7 @@
   </head>
 
  <body>
-  <form action="save_edit.php" method="POST">
+  <form action="edit_orders_save.php" method="POST">
       <table border="1" style="font-size:14px" class="table table-striped table-hover">
   <?php
           include('core/config.php');
@@ -65,7 +65,7 @@
       <input type="submit" name="submit" value="submit"/>
     </form>
      <form>
-        <input type="button" value="Powrót" onclick="window.location.href='http://localhost/Zamowienia_strona.php'" />
+        <input type="button" value="Powrót" onclick="window.location.href='http://localhost/List_orders.php'" />
       </form> 
   </body>
 </html>
