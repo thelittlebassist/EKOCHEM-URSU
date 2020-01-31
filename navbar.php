@@ -11,10 +11,10 @@
             <a class="nav-link" href="http://localhost/Home.php">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="http://localhost/Dostawcy_lista.php">Dostawcy<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="http://localhost/List_suppliers.php">Dostawcy<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="http://localhost/Zamowienia_Strona.php">Zamówienia<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="http://localhost/List_orders.php">Zamówienia<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="https://trello.com/b/MH3jpE68/ekochem-30">Trello</a>
