@@ -1,7 +1,7 @@
 <html>
 
   <head>
-    <title>Dział IT - Strona główna TEST3</title>
+    <title>Dział IT - Strona główna TEST4</title>
     <?php include('core/bootstrap.php');?>
 
   </head>
@@ -12,6 +12,6 @@
           include('core/navbar.php');
   ?>
 
-   
+
      </body>
 </html>
