@@ -11,7 +11,7 @@
           <td width="238"><input type="text" name="Name" size="100"></td>
           </tr>
         <tr>
-          <th width="120">Adres</th> 
+          <th width="120">Adres</th>
           <td><input type="text" name="Adres" size="100"></td>
           </tr>
         <tr>
@@ -27,7 +27,7 @@
       <input type="submit" name="submit" value="submit">
     </form>
     <form>
-        <input type="button" value="Powrót" onclick="window.location.href='http://localhost/List_suppliers.php'" />
-      </form> 
+        <input type="button" value="Powrót" onclick="window.location.href='http://localhost/EKOCHEM-URSU/List_suppliers.php'" />
+      </form>
   </body>
 </html>

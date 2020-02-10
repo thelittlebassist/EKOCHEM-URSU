@@ -37,7 +37,7 @@
     <!-- END NAGŁÓWEK TABELI -->
 
         <?php
-          
+
             $sql = "select * from Zamowienie order by DataZamowienia";
               if ($stmt = $pdo->prepare($sql)) {
                  if ($stmt->execute()) {
@@ -52,7 +52,7 @@
             	 print "  <td>" . $row["NumZamDost"] . "<br>";
             	 print "  <td>" . $row["DataZamowienia"] . "<br>";
             	 print "  <td>" . $row["StatusZam"] . "<br>";
-            	 print "  <td>" . $row["DataDost"] . "<br>";  
+            	 print "  <td>" . $row["DataDost"] . "<br>";
             	 print "  <td>" . $row["StatusFaktury"] . "<br>";
             	 print "  <td>" . $row["NrFaktury"] . "<br>";
             	 print "  <td>" . $row["Komentarz"] . "<br>";
@@ -65,8 +65,8 @@
         ?>
       </table>
       <form>
-        <input type="button" value="Dodaj Zamówienie" onclick="window.location.href='http://localhost/add_orders_form.php'" />
-      </form> 
+        <input type="button" value="Dodaj Zamówienie" onclick="window.location.href='http://localhost/EKOCHEM-URSU/add_orders_form.php'" />
+      </form>
     </div>
   </body>
 </html>

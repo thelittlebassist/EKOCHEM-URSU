@@ -8,13 +8,13 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="http://localhost/Home.php">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="http://localhost/EKOCHEM-URSU/Home.php">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="http://localhost/List_suppliers.php">Dostawcy<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="http://localhost/EKOCHEM-URSU/List_suppliers.php">Dostawcy<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="http://localhost/List_orders.php">Zamówienia<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="http://localhost/EKOCHEM-URSU/List_orders.php">Zamówienia<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="https://trello.com/b/MH3jpE68/ekochem-30">Trello</a>
@@ -22,7 +22,7 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Akcje</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="http://localhost/add_form.php">Dodaj Zamówienie</a>
+              <a class="dropdown-item" href="http://localhost/EKOCHEM-URSU/add_form.php">Dodaj Zamówienie</a>
               <a class="dropdown-item" href="#">Another action</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">Something else here</a>

@@ -1,7 +1,7 @@
 <html>
 
   <head>
-    
+
     <title>Dział IT - Dostawcy</title>
     <?php include('core/bootstrap.php');?>
 
@@ -27,13 +27,13 @@
           <th>Adres
           <th>Mail
           <th>Website
-          <th>Opcje  
+          <th>Opcje
         	</tr>
         </thead>
     <!-- END NAGŁÓWEK TABELI -->
 
         <?php
-          
+
             $sql = "select * from Dostawca order by Id_supplier";
               if ($stmt = $pdo->prepare($sql)) {
                  if ($stmt->execute()) {
@@ -56,8 +56,8 @@
         ?>
       </table>
       <form>
-        <input type="button" value="Dodaj Dostawcę" onclick="window.location.href='http://localhost/Add_supplier_form.php'" />
-      </form> 
+        <input type="button" value="Dodaj Dostawcę" onclick="window.location.href='http://localhost/EKOCHEM-URSU/Add_supplier_form.php'" />
+      </form>
     </div>
   </body>
 </html>

@@ -23,11 +23,11 @@
 					'mail' => $_POST['mail'],
 					'website' => $_POST['website'],
 					];
-			
+
 				try {
 		            $pdo->prepare($sql)->execute($data);
 		            echo '<div class="alert alert-success">';
-		            echo "Dostawca został zedytowany <br> <a class='btn btn-outline-dark btn-sm'  href='http://localhost/List_suppliers.php'>Lista dostawców</a>";
+		            echo "Dostawca został zedytowany <br> <a class='btn btn-outline-dark btn-sm'  href='http://localhost/EKOCHEM-URSU/List_suppliers.php'>Lista dostawców</a>";
 		            echo '</div>';
 		            die ("");
         	}
@@ -35,7 +35,7 @@
 		            echo '<div class="alert alert-warning">';
 		            echo 'Exception -> ';
 		            echo ($e->getMessage());
-		            die("<br>Coś poszło nie tak z zapisem  <br> <a class='btn btn-outline-dark btn-sm'  href='http://localhost/List_suppliers.php'>Lista dostawców</a></div>");
+		            die("<br>Coś poszło nie tak z zapisem  <br> <a class='btn btn-outline-dark btn-sm'  href='http://localhost/EKOCHEM-URSU/List_suppliers.php'>Lista dostawców</a></div>");
 		        	}
 			?>
 		</div>

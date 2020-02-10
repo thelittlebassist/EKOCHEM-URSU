@@ -65,7 +65,7 @@
       <input type="submit" name="submit" value="submit"/>
     </form>
      <form>
-        <input type="button" value="Powrót" onclick="window.location.href='http://localhost/List_orders.php'" />
-      </form> 
+        <input type="button" value="Powrót" onclick="window.location.href='http://localhost/EKOCHEM-URSU/List_orders.php'" />
+      </form>
   </body>
 </html>

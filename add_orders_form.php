@@ -11,7 +11,7 @@
           <td width="238"><input type="text" name="Opis" size="100"></td>
           </tr>
         <tr>
-          <th width="120">Dostawca</th> 
+          <th width="120">Dostawca</th>
           <td><input type="text" name="Dostawca" size="100"></td>
           </tr>
         <tr>
@@ -47,7 +47,7 @@
       <input type="submit" name="submit" value="submit">
     </form>
     <form>
-        <input type="button" value="Powrót" onclick="window.location.href='http://localhost/List_orders.php'" />
-      </form> 
+        <input type="button" value="Powrót" onclick="window.location.href='http://localhost/EKOCHEM-URSU/List_orders.php'" />
+      </form>
   </body>
 </html>
