@@ -4,7 +4,7 @@
       <?php include('core/bootstrap.php');?>
   </head>
   <body>
-    <form action="add_faktura_save.php" name="frmAdd" method="post">
+    <form action="add_faktury_save.php" name="frmAdd" method="post">
       <table border="1" style="font-size:14px" class="table table-striped table-hover">
         <tr>
           <th width="120">Numer</th>

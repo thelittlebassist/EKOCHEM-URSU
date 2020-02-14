@@ -61,7 +61,7 @@
         ?>
       </table>
       <form>
-        <input type="button" value="Dodaj fakturę" onclick="window.location.href='http://localhost/EKOCHEM-URSU/add_faktura_form.php'" />
+        <input type="button" value="Dodaj fakturę" onclick="window.location.href='http://localhost/EKOCHEM-URSU/add_faktury_form.php'" />
       </form>
     </div>
   </body>
