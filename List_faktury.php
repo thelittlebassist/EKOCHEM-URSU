@@ -36,7 +36,9 @@
 
         <?php
 
-            $sql = "select * from Faktury order by DataWyst";
+            $sql = "select * from Faktury
+                    inner join Zamowienie on [Zamowienie].[Id_order]=[Faktury].[Id_order]
+                    order by DataWyst;";
               if ($stmt = $pdo->prepare($sql)) {
                  if ($stmt->execute()) {
                   }
@@ -44,16 +46,16 @@
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) // while there are rows
               {
                print "<tr>";
-               print "  <td>" . $row["Id_faktury"] . "<br>";
+               print "  <td>" . $row["id_faktury"] . "<br>";
                print "  <td>" . $row["NumerFakt"] . "<br>";
-            	 print "  <td>" . $row["Dostawca"] . "<br>";
+               print "  <td>" . $row["Dostawca"] . "<br>";
             	 print "  <td>" . $row["Id_order"] . "<br>";
             	 print "  <td>" . $row["DataWyst"] . "<br>";
             	 print "  <td>" . $row["DataDost"] . "<br>";
             	 print "  <td>" . $row["Kwota"] . "<br>";
             	 print "  <td>" . $row["Komentarz"] . "<br>";
-               print " <td><a class='btn btn-outline-dark btn-sm'  href='edit_orders_form.php?Id_order=".$row['Id_order']."'>Edytuj</a>
-                            <a class='btn btn-outline-dark btn-sm'  href='delete_order.php?Id_order=".$row['Id_order']."'>Usuń</a><br>";
+               print " <td><a class='btn btn-outline-dark btn-sm'  href='edit_faktury_form.php?id_faktury=".$row['id_faktury']."'>Edytuj</a>
+                            <a class='btn btn-outline-dark btn-sm'  href='delete_faktury.php?id_faktury=".$row['id_faktury']."'>Usuń</a><br>";
                print "</tr>";
               }
             	 print_r($row);

@@ -8,12 +8,9 @@
 			<?php
 				include('core/config.php');
 
-				$sql = "INSERT INTO Faktury (NumerFakt,Dostawca,Id_order,DataWyst,DataDost,Kwota,Komentarz)
-						VALUES
-						(:NumerFakt,:Dostawca,:Id_order,:DataWyst,:DataDost,:Kwota,:Komentarz)";
+				$sql = "INSERT INTO Faktury (NumerFakt,Id_order,DataWyst,DataDost,Kwota,Komentarz) VALUES (:NumerFakt,:Id_order,:DataWyst,:DataDost,:Kwota,:Komentarz)";
 				$data = [
 					'NumerFakt' => $_POST['NumerFakt'],
-					'Dostawca' => $_POST['Dostawca'],
 					'Id_order' => $_POST['Id_order'],
 					'DataWyst' => $_POST['DataWyst'],
 					'DataDost' => $_POST['DataDost'],

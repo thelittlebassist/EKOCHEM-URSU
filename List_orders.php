@@ -56,8 +56,9 @@
             	 print "  <td>" . $row["StatusFaktury"] . "<br>";
             	 print "  <td>" . $row["NrFaktury"] . "<br>";
             	 print "  <td>" . $row["Komentarz"] . "<br>";
-               print " <td><a class='btn btn-outline-dark btn-sm'  href='edit_orders_form.php?Id_order=".$row['Id_order']."'>Edytuj</a>
-                            <a class='btn btn-outline-dark btn-sm'  href='delete_order.php?Id_order=".$row['Id_order']."'>Usuń</a><br>";
+               print " <td><a class='btn btn-outline-dark btn-sm'  href='edit_orders_form.php?Id_order=".$row['Id_order']."'>E</a>
+                            <a class='btn btn-outline-dark btn-sm'  href='delete_order.php?Id_order=".$row['Id_order']."'>U</a>
+                              <a class='btn btn-outline-dark btn-sm'  href='add_faktury_form_fromorder.php?Id_order=".$row['Id_order']."'>F</a>";
                print "</tr>";
               }
             	 print_r($row);

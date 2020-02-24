@@ -8,12 +8,12 @@
 			<?php
 				include('core/config.php');
 
-				$sql = "DELETE From Faktury WHERE Id_faktury = :Id_faktury";
-				$data = ['Id_faktury' => $Id_faktury
+				$sql = "DELETE From Faktury WHERE id_faktury = :id_faktury";
+				$data = ['id_faktury' => $id_faktury
 				];
 
 				if ($stmt = $pdo->prepare($sql)) {
-                	if ($stmt->execute(array(':Id_faktury'=>trim($_GET['Id_faktury'])))) {
+                	if ($stmt->execute(array(':id_faktury'=>trim($_GET['id_faktury'])))) {
                   }
                 }
 
