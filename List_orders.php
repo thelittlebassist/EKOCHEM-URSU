@@ -54,7 +54,7 @@
             	 print "  <td>" . $row["StatusZam"] . "<br>";
             	 print "  <td>" . $row["DataDost"] . "<br>";
             	 print "  <td>" . $row["StatusFaktury"] . "<br>";
-            	 print "  <td>" . $row["NrFaktury"] . "<br>";
+            	 print "  <td><a href='view_faktury.php?NumerFakt=".$row['NrFaktury']."'>" . $row["NrFaktury"] . "</a><br>";
             	 print "  <td>" . $row["Komentarz"] . "<br>";
                print " <td><a class='btn btn-outline-dark btn-sm'  href='edit_orders_form.php?Id_order=".$row['Id_order']."'>E</a>
                             <a class='btn btn-outline-dark btn-sm'  href='delete_order.php?Id_order=".$row['Id_order']."'>U</a>
