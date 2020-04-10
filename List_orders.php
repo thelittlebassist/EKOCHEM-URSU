@@ -10,6 +10,7 @@
     <?php
             include('core/navbar.php');
             include('core/config.php');
+            include('core/css.php');
     ?>
 
     <div>
@@ -18,7 +19,7 @@
 
     <!-- NAGŁÓWEK TABELI -->
     <div class="container-fluid">
-      <table id="header-fixed" border="1" style="font-size:14px" class="table table-striped table-hover">
+      <table border="1" style="font-size:14px" class="table table-striped table-hover tableFixHead">
         <thead class="thead-dark">
           <tr>
           <th>id
@@ -35,8 +36,8 @@
         	</tr>
         </thead>
     <!-- END NAGŁÓWEK TABELI -->
-
-        <?php
+          <tbody>
+            <?php
 
             $sql = "select * from Zamowienie order by DataZamowienia";
               if ($stmt = $pdo->prepare($sql)) {
@@ -63,7 +64,8 @@
               }
             	 print_r($row);
              sqlsrv_close($conn);
-        ?>
+             ?>
+           </tbody>
       </table>
       <form>
         <input type="button" value="Dodaj Zamówienie" onclick="window.location.href='http://localhost/EKOCHEM-URSU/add_orders_form.php'" />

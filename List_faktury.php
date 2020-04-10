@@ -10,6 +10,7 @@
     <?php
             include('core/navbar.php');
             include('core/config.php');
+            include('core/css.php');
     ?>
 
     <div>
@@ -18,7 +19,7 @@
 
     <!-- NAGŁÓWEK TABELI -->
     <div class="container-fluid">
-      <table id="header-fixed" border="1" style="font-size:14px" class="table table-striped table-hover">
+      <table id="header-fixed" border="1" style="font-size:14px" class="table table-striped table-hover tableFixHead">
         <thead class="thead-dark">
           <tr>
           <th>id
