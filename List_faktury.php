@@ -17,6 +17,10 @@
     <h3 align="center">Lista Faktur</h3>
     </div>
 
+    <form>
+      <input class="btn btn-dark" type="button" value="Dodaj fakturę" onclick="window.location.href='http://localhost/EKOCHEM-URSU/add_faktury_form.php'" />
+    </form>
+
     <!-- NAGŁÓWEK TABELI -->
     <div class="container-fluid">
       <table id="header-fixed" border="1" style="font-size:14px" class="table table-striped table-hover tableFixHead">
@@ -37,7 +41,7 @@
 
         <?php
 
-            $sql = "select * from Faktury
+            $sql = "select *, Zamowienie.Komentarz AS Komentarz_Zam from Faktury
                     inner join Zamowienie on [Zamowienie].[Id_order]=[Faktury].[Id_order]
                     order by DataWyst;";
               if ($stmt = $pdo->prepare($sql)) {
@@ -54,7 +58,7 @@
             	 print "  <td>" . $row["DataWyst"] . "<br>";
             	 print "  <td>" . $row["DataDost"] . "<br>";
             	 print "  <td>" . $row["Kwota"] . "<br>";
-            	 print "  <td>" . $row["Komentarz"] . "<br>";
+            	 print "  <td>" . $row["Komentarz_fak"] . "<br>";
                print " <td><a class='btn btn-outline-dark btn-sm'  href='edit_faktury_form.php?id_faktury=".$row['id_faktury']."'>Edytuj</a>
                             <a class='btn btn-outline-dark btn-sm'  href='delete_faktury.php?id_faktury=".$row['id_faktury']."'>Usuń</a><br>";
                print "</tr>";
@@ -64,7 +68,7 @@
         ?>
       </table>
       <form>
-        <input type="button" value="Dodaj fakturę" onclick="window.location.href='http://localhost/EKOCHEM-URSU/add_faktury_form.php'" />
+        <input class="btn btn-dark" type="button" value="Dodaj fakturę" onclick="window.location.href='http://localhost/EKOCHEM-URSU/add_faktury_form.php'" />
       </form>
     </div>
   </body>

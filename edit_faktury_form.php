@@ -1,7 +1,10 @@
 <html>
   <head>
     <title>Edycja Faktury</title>
-      <?php include('core/bootstrap.php');?>
+      <?php
+          include('core/bootstrap.php');
+          include('core/navbar.php');
+      ?>
   </head>
 
  <body>
@@ -10,7 +13,7 @@
   <?php
           include('core/config.php');
 
-            $sql = "select id_faktury,NumerFakt,Id_order,DataWyst,DataDost,Kwota,Komentarz from Faktury where id_faktury = :id_faktury";
+            $sql = "select id_faktury,NumerFakt,Id_order,DataWyst,DataDost,Kwota,Komentarz_fak from Faktury where id_faktury = :id_faktury";
               if ($stmt = $pdo->prepare($sql)) {
                  if ($stmt->execute(array(':id_faktury'=>trim($_GET['id_faktury'])))) {
                   }
@@ -43,17 +46,32 @@
                print '</tr>';
                print '<tr>';
                print '<th width="120">Komentarz</th>';
-               print '<td><input type="text" name="Komentarz" size="100" value="' . $row["Komentarz"] . '"></td>';
+               print '<td><input type="text" name="Komentarz_fak" size="100" value="' . $row["Komentarz_fak"] . '"></td>';
                print '</tr>';
               }
               print_r($row);
              sqlsrv_close($conn);
         ?>
       </table>
-      <input type="submit" name="submit" value="submit"/>
+      <input class='btn btn-dark btn-sm' type="submit" name="submit" value="Zapisz"/>
     </form>
-     <form>
-        <input type="button" value="Powrót" onclick="window.location.href='http://localhost/EKOCHEM-URSU/List_faktury.php'" />
-      </form>
+      <div>
+        <?php
+        $sql = "select * from Faktury
+                inner join Zamowienie on [Zamowienie].[Id_order]=[Faktury].[Id_order]
+                where id_faktury = :id_faktury";
+                  if ($stmt = $pdo->prepare($sql)) {
+                       if ($stmt->execute(array(':id_faktury'=>trim($_GET['id_faktury'])))) {
+                        }
+                    }
+                  while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) // while there are rows
+                    {
+                     print "<a class='btn btn-secondary btn-sm'  href='view_faktury.php?id_faktury=".$row["id_faktury"]."'>Powrót</a>";
+                     print "<a class='btn btn-outline-dark btn-sm'  href='List_orders.php'>Zamówienia</a>";
+                     print "<a class='btn btn-outline-dark btn-sm'  href='List_faktury.php'>Faktury</a>";
+                    }
+              ?>
+      </div>
+
   </body>
 </html>

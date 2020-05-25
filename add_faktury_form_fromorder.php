@@ -43,7 +43,7 @@
                print '</tr>';
                print '<tr>';
                print '<th width="120">Komentarz</th>';
-               print '<td><input type="text" name="Komentarz" size="100"></td>';
+               print '<td><input type="text" name="Komentarz_fak" size="100"></td>';
                print '</tr>';
               }
               print_r($row);

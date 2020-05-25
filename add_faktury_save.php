@@ -8,14 +8,14 @@
 			<?php
 				include('core/config.php');
 
-				$sql1 = "INSERT INTO Faktury (NumerFakt,Id_order,DataWyst,DataDost,Kwota,Komentarz) VALUES (:NumerFakt,:Id_order,:DataWyst,:DataDost,:Kwota,:Komentarz)";
+				$sql1 = "INSERT INTO Faktury (NumerFakt,Id_order,DataWyst,DataDost,Kwota,Komentarz_fak) VALUES (:NumerFakt,:Id_order,:DataWyst,:DataDost,:Kwota,:Komentarz_fak)";
 				$data1 = [
 					'NumerFakt' => $_POST['NumerFakt'],
 					'Id_order' => $_POST['Id_order'],
 					'DataWyst' => $_POST['DataWyst'],
 					'DataDost' => $_POST['DataDost'],
 					'Kwota' => $_POST['Kwota'],
-					'Komentarz' => $_POST['Komentarz']
+					'Komentarz_fak' => $_POST['Komentarz_fak']
 				];
 
 				$sql2 = "UPDATE Zamowienie

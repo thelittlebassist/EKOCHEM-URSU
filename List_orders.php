@@ -16,6 +16,9 @@
     <div>
     <h3 align="center">Wykaz Zamówień</h3>
     </div>
+    <form>
+      <input class="btn btn-dark" type="button" value="Dodaj Zamówienie" onclick="window.location.href='http://localhost/EKOCHEM-URSU/add_orders_form.php'" />
+    </form>
 
     <!-- NAGŁÓWEK TABELI -->
     <div class="container-fluid">
@@ -39,7 +42,21 @@
           <tbody>
             <?php
 
-            $sql = "select * from Zamowienie order by DataZamowienia";
+            $sql = "select
+                      	z.Id_order,
+                      	z.Opis,
+                      	z.Dostawca,
+                      	z.NumZamDost,
+                      	z.DataZamowienia,
+                      	z.StatusZam,
+                      	z.DataDost,
+                      	z.StatusFaktury,
+                      	z.NrFaktury,
+                      	z.Komentarz,
+                      	f.id_faktury
+                    from Zamowienie as z
+                    left join Faktury as f on f.NumerFakt = z.NrFaktury
+                    order by DataZamowienia";
               if ($stmt = $pdo->prepare($sql)) {
                  if ($stmt->execute()) {
                   }
@@ -55,11 +72,13 @@
             	 print "  <td>" . $row["StatusZam"] . "<br>";
             	 print "  <td>" . $row["DataDost"] . "<br>";
             	 print "  <td>" . $row["StatusFaktury"] . "<br>";
-            	 print "  <td><a href='view_faktury.php?NumerFakt=".$row['NrFaktury']."'>" . $row["NrFaktury"] . "</a><br>";
+            	 print "  <td><a href='view_faktury.php?id_faktury=".$row['id_faktury']."'>" . $row["NrFaktury"] . "</a><br>";
+               //print "  <td>" . $row["NrFaktury"] . "<br>";
             	 print "  <td>" . $row["Komentarz"] . "<br>";
-               print " <td><a class='btn btn-outline-dark btn-sm'  href='edit_orders_form.php?Id_order=".$row['Id_order']."'>E</a>
-                            <a class='btn btn-outline-dark btn-sm'  href='delete_order.php?Id_order=".$row['Id_order']."'>U</a>
-                              <a class='btn btn-outline-dark btn-sm'  href='add_faktury_form_fromorder.php?Id_order=".$row['Id_order']."'>F</a>";
+               print " <td><a class='btn btn-outline-dark btn-sm'  href='view_orders.php?Id_order=".$row['Id_order']."'>P</a>
+                           <a class='btn btn-outline-dark btn-sm'  href='edit_orders_form.php?Id_order=".$row['Id_order']."'>E</a>
+                           <a class='btn btn-outline-dark btn-sm'  href='delete_order.php?Id_order=".$row['Id_order']."'>U</a>
+                           <a class='btn btn-outline-dark btn-sm'  href='add_faktury_form_fromorder.php?Id_order=".$row['Id_order']."'>F</a>";
                print "</tr>";
               }
             	 print_r($row);
@@ -68,7 +87,7 @@
            </tbody>
       </table>
       <form>
-        <input type="button" value="Dodaj Zamówienie" onclick="window.location.href='http://localhost/EKOCHEM-URSU/add_orders_form.php'" />
+        <input class="btn btn-dark" type="button" value="Dodaj Zamówienie" onclick="window.location.href='http://localhost/EKOCHEM-URSU/add_orders_form.php'" />
       </form>
     </div>
   </body>

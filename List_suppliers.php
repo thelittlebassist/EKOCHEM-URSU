@@ -17,6 +17,10 @@
     <div>
     <h3 align="center">Dostawcy</h3>
     </div>
+    
+    <form>
+      <input class="btn btn-dark" type="button" value="Dodaj Dostawcę" onclick="window.location.href='http://localhost/EKOCHEM-URSU/Add_supplier_form.php'" />
+    </form>
 
     <!-- NAGŁÓWEK TABELI -->
     <div class="container-fluid">
@@ -57,7 +61,7 @@
         ?>
       </table>
       <form>
-        <input type="button" value="Dodaj Dostawcę" onclick="window.location.href='http://localhost/EKOCHEM-URSU/Add_supplier_form.php'" />
+        <input class="btn btn-dark" type="button" value="Dodaj Dostawcę" onclick="window.location.href='http://localhost/EKOCHEM-URSU/Add_supplier_form.php'" />
       </form>
     </div>
   </body>

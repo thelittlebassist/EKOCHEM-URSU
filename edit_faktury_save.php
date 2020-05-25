@@ -11,23 +11,21 @@
 				$sql = "UPDATE Faktury
 							SET
 								NumerFakt = :NumerFakt,
-								Dostawca = :Dostawca,
 								Id_order = :Id_order,
 								DataWyst = :DataWyst,
 								DataDost = :DataDost,
 								Kwota = :Kwota,
-								Komentarz = :Komentarz
-							WHERE Id_faktury = :Id_faktury";
+								Komentarz_fak = :Komentarz_fak
+							WHERE id_faktury = :id_faktury";
 
 				$data = [
-					'Id_faktury' => $_POST['Id_faktury'],
+					'id_faktury' => $_POST['id_faktury'],
           'NumerFakt' => $_POST['NumerFakt'],
-					'Dostawca' => $_POST['Dostawca'],
 					'Id_order' => $_POST['Id_order'],
 					'DataWyst' => $_POST['DataWyst'],
 					'DataDost' => $_POST['DataDost'],
 					'Kwota' => $_POST['Kwota'],
-					'Komentarz' => $_POST['Komentarz']
+					'Komentarz_fak' => $_POST['Komentarz_fak']
 				];
 
 				try {
