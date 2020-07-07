@@ -19,6 +19,9 @@
           <li class="nav-item active">
             <a class="nav-link" href="http://localhost/EKOCHEM-URSU/List_faktury.php">Faktury<span class="sr-only">(current)</span></a>
           </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="http://localhost/EKOCHEM-URSU/List_persons.php">Pracownicy<span class="sr-only">(current)</span></a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="https://trello.com/b/MH3jpE68/ekochem-30">Trello</a>
           </li>
