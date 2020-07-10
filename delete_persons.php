@@ -21,7 +21,7 @@
 				try {
 		            $pdo->prepare($sql)->execute($data);
 		            echo '<div class="alert alert-success">';
-		            echo "Zamówienie zostało usunięte <br> <a class='btn btn-outline-dark btn-sm'  href='http://localhost/EKOCHEM-URSU/List_persons.php'>Lista zamówień</a>";
+		            echo "Pracownik został usunięty <br> <a class='btn btn-outline-dark btn-sm'  href='http://localhost/EKOCHEM-URSU/List_persons.php'>Lista pracowników</a>";
 		            echo '</div>';
 		            die ("");
         	}

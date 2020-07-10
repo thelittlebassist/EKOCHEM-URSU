@@ -50,7 +50,7 @@
                       AS Aktywny
                     from Pracownicy AS p
                     inner join Stanowiska AS s ON s.Id = p.StanowiskoId
-                    
+
                     order by p.Nazwisko;";
               if ($stmt = $pdo->prepare($sql)) {
                  if ($stmt->execute()) {
@@ -63,9 +63,10 @@
                print "  <td>" . $row["Nazwisko"] . "<br>";
                print "  <td>" . $row["Stanowisko"] . "<br>";
                print "  <td>" . $row["Aktywny"] . "<br>";
+                  $delete="Czy chcesz usunąć?";
                print " <td><a class='btn btn-outline-dark btn-sm'  href='view_persons.php?Id=".$row['Id']."'>P</a>
                            <a class='btn btn-outline-dark btn-sm'  href='edit_persons_form.php?Id=".$row['Id']."'>E</a>
-                           <a class='btn btn-outline-dark btn-sm'  href='delete_persons.php?Id=".$row['Id']."'>U</a>";
+                           <a class='btn btn-outline-dark btn-sm' href='delete_persons.php?Id=".$row['Id']."' onclick=\"return confirm('".$delete."');\">U</a>";
                print "</tr>";
               }
             	 print_r($row);

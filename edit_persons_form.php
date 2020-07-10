@@ -8,6 +8,10 @@
  </head>
 
  <body>
+
+   <div>
+   <h3 align="center">Edycja Pracownika</h3>
+   </div>
       <form action="edit_persons_save.php" method="POST">
       <table border="1" style="font-size:14px" class="table table-striped table-hover">
   <?php
@@ -65,11 +69,11 @@
                                    from Stanowiska as s
                                   	left join (select * from Pracownicy
 				                          where Id = $prac_id) as p ON p.StanowiskoId = s.Id";
-                         if ($stmt = $pdo->prepare($sql1)) {
-                            if ($stmt->execute()) {
+                         if ($stmt1 = $pdo->prepare($sql1)) {
+                            if ($stmt1->execute()) {
                              }
                          }
-                       while ($row_st = $stmt->fetch(PDO::FETCH_ASSOC)) // while there are rows
+                       while ($row_st = $stmt1->fetch(PDO::FETCH_ASSOC)) // while there are rows
                          {
                           if(empty($row_st['prac_id']) or $row_st['prac_id'] == ''){
                             $selected = '';
@@ -93,11 +97,11 @@
                                    from Dzialy as d
                                     left join (select * from Pracownicy
                                   where Id = $prac_id) as p ON p.DziałId = d.Id";
-                         if ($stmt = $pdo->prepare($sql2)) {
-                            if ($stmt->execute()) {
+                         if ($stmt2 = $pdo->prepare($sql2)) {
+                            if ($stmt2->execute()) {
                              }
                          }
-                       while ($row_dz = $stmt->fetch(PDO::FETCH_ASSOC)) // while there are rows
+                       while ($row_dz = $stmt2->fetch(PDO::FETCH_ASSOC)) // while there are rows
                          {
                           if(empty($row_dz['prac_id']) or $row_dz['prac_id'] == ''){
                             $selected = '';
@@ -121,11 +125,11 @@
                                    from Spolki as sp
                                     left join (select * from Pracownicy
                                   where Id = $prac_id) as p ON p.SpółkaId = sp.Id";
-                         if ($stmt = $pdo->prepare($sql3)) {
-                            if ($stmt->execute()) {
+                         if ($stmt3 = $pdo->prepare($sql3)) {
+                            if ($stmt3->execute()) {
                              }
                          }
-                       while ($row_sp = $stmt->fetch(PDO::FETCH_ASSOC)) // while there are rows
+                       while ($row_sp = $stmt3->fetch(PDO::FETCH_ASSOC)) // while there are rows
                          {
                           if(empty($row_sp['prac_id']) or $row_sp['prac_id'] == ''){
                             $selected = '';
@@ -155,26 +159,27 @@
                print '<th width="120">Uwagi</th>';
                print '<td><input type="text" size="100" name="Uwagi" value="' . $row['Uwagi'] . '"></td>';
                print '</tr>';
+                }
 
-              }
               print_r($row);
              sqlsrv_close($conn);
+
         ?>
-      </table>
+        </table>
       <input class='btn btn-dark btn-sm' type="submit" name="submit" value="Zapisz"/>
     </form>
     <div>
-     <?php/*
+     <?php
                 if ($stmt = $pdo->prepare($sql)) {
                      if ($stmt->execute(array(':Id'=>trim($_GET['Id'])))) {
                       }
                   }
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) // while there are rows
                   {
-                   print "<a class='btn btn-dark btn-sm'  href='edit_persons_form.php?Id=".$row["Id"]."'>Edytuj</a>";
-                   print "<a class='btn btn-outline-dark btn-sm'  href='List_persons.php'>Powrót</a>";
+                   print "<a class='btn btn-outline-dark btn-sm'  href='view_persons.php?Id=".$row["Id"]."'>Powrót do podglądu</a>";
+                   print "<a class='btn btn-outline-dark btn-sm'  href='List_persons.php'>Powrót do listy pracowników</a>";
                   }
-          */?>
+          ?>
     </div>
   </body>
 </html>
