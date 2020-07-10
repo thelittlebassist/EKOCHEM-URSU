@@ -59,8 +59,9 @@
             	 print "  <td>" . $row["DataDost"] . "<br>";
             	 print "  <td>" . $row["Kwota"] . "<br>";
             	 print "  <td>" . $row["Komentarz_fak"] . "<br>";
+                  $delete="Czy chcesz usunąć?";
                print " <td><a class='btn btn-outline-dark btn-sm'  href='edit_faktury_form.php?id_faktury=".$row['id_faktury']."'>Edytuj</a>
-                            <a class='btn btn-outline-dark btn-sm'  href='delete_faktury.php?id_faktury=".$row['id_faktury']."'>Usuń</a><br>";
+                            <a class='btn btn-outline-dark btn-sm'  href='delete_faktury.php?id_faktury=".$row['id_faktury']."' onclick=\"return confirm('".$delete."');\">Usuń</a><br>";
                print "</tr>";
               }
             	 print_r($row);

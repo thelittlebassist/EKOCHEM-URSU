@@ -52,8 +52,9 @@
             	 print "  <td>" . $row["Adres"] . "<br>";
             	 print "  <td>" . $row["mail"] . "<br>";
             	 print "  <td>" . $row["website"] . "<br>";
+                  $delete="Czy chcesz usunąć?";
                print " <td><a class='btn btn-outline-dark btn-sm'  href='edit_supplier_form.php?Id_supplier=".$row['Id_supplier']."'>Edytuj</a>
-                            <a class='btn btn-outline-dark btn-sm'  href='delete_supplier.php?Id_supplier=".$row['Id_supplier']."'>Usuń</a><br>";
+                            <a class='btn btn-outline-dark btn-sm'  href='delete_supplier.php?Id_supplier=".$row['Id_supplier']."' onclick=\"return confirm('".$delete."');\">Usuń</a><br>";
                print "</tr>";
               }
             	 print_r($row);

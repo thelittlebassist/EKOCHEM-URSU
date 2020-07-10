@@ -75,9 +75,10 @@
             	 print "  <td><a href='view_faktury.php?id_faktury=".$row['id_faktury']."'>" . $row["NrFaktury"] . "</a><br>";
                //print "  <td>" . $row["NrFaktury"] . "<br>";
             	 print "  <td>" . $row["Komentarz"] . "<br>";
+                  $delete="Czy chcesz usunąć?";
                print " <td><a class='btn btn-outline-dark btn-sm'  href='view_orders.php?Id_order=".$row['Id_order']."'>P</a>
                            <a class='btn btn-outline-dark btn-sm'  href='edit_orders_form.php?Id_order=".$row['Id_order']."'>E</a>
-                           <a class='btn btn-outline-dark btn-sm'  href='delete_order.php?Id_order=".$row['Id_order']."'>U</a>
+                           <a class='btn btn-outline-dark btn-sm'  href='delete_order.php?Id_order=".$row['Id_order']."' onclick=\"return confirm('".$delete."');\">U</a>
                            <a class='btn btn-outline-dark btn-sm'  href='add_faktury_form_fromorder.php?Id_order=".$row['Id_order']."'>F</a>";
                print "</tr>";
               }
