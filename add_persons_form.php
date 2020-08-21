@@ -21,6 +21,7 @@
         <tr>
           <th width="120">Stanowisko</th>
           <td><select name="StanowiskoId">
+                  <option value='wyb'>--WYBIERZ--</option>
             <?php
                 $sql = "select * from Stanowiska";
                   if ($stmt = $pdo->prepare($sql)) {
@@ -54,6 +55,7 @@
           <tr>
           <th width="120">Spółka</th>
           <td><select name="SpółkaId">
+                  <option value='wyb'>--WYBIERZ--</option>
             <?php
                 $sql = "select * from Spolki";
                   if ($stmt = $pdo->prepare($sql)) {
@@ -72,6 +74,7 @@
         <tr>
         <th width="120">Dział</th>
         <td><select name="DziałId">
+                <option value='wyb'>--WYBIERZ--</option>
           <?php
               $sql = "select * from Dzialy";
                 if ($stmt = $pdo->prepare($sql)) {

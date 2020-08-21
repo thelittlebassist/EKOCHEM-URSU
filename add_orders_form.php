@@ -16,6 +16,7 @@
         <tr>
           <th width ="120">Dostawca</th>
           <td><select name="Dostawca">
+                  <option value='wyb'>--WYBIERZ--</option>
             <?php
               $sql = "select * from Dostawca";
                 if ($stmt = $pdo->prepare($sql)) {

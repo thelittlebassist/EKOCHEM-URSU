@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Nowe zamówienie</title>
+    <title>Nowy Dostawca</title>
       <?php include('core/bootstrap.php');?>
   </head>
   <body>

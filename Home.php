@@ -24,6 +24,14 @@
   <button type="button" class="btn btn-dark btn-lg btn-block">Faktury</button>
 </a>
 
+<a class="nav-link" href="http://localhost/EKOCHEM-URSU/List_persons.php">
+  <button type="button" class="btn btn-dark btn-lg btn-block">Pracownicy</button>
+</a>
+
+<a class="nav-link" href="http://localhost/EKOCHEM-URSU/List_comps.php">
+  <button type="button" class="btn btn-dark btn-lg btn-block">Kompy</button>
+</a>
+
 </div>
 
      </body>

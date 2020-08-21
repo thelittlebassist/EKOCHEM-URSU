@@ -1,6 +1,6 @@
 <!-- PASEK NAWIGACJI -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-      <a class="navbar-brand" href="#">EKOCHEM-IT</a>
+      <a class="navbar-brand" href="#">URSU</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -22,6 +22,9 @@
           <li class="nav-item active">
             <a class="nav-link" href="http://localhost/EKOCHEM-URSU/List_persons.php">Pracownicy<span class="sr-only">(current)</span></a>
           </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="http://localhost/EKOCHEM-URSU/List_comps.php">Kompy<span class="sr-only">(current)</span></a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="https://trello.com/b/MH3jpE68/ekochem-30">Trello</a>
           </li>
@@ -31,6 +34,7 @@
               <a class="dropdown-item" href="http://localhost/EKOCHEM-URSU/add_orders_form.php">Dodaj Zamówienie</a>
               <a class="dropdown-item" href="http://localhost/EKOCHEM-URSU/add_supplier_form.php">Dodaj dostawcę</a>
               <a class="dropdown-item" href="http://localhost/EKOCHEM-URSU/add_faktury_form.php">Dodaj fakturę</a>
+              <a class="dropdown-item" href="http://localhost/EKOCHEM-URSU/add_persons_form.php">Dodaj pracownika</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">Something else here</a>
             </div>
