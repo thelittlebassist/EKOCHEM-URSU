@@ -24,7 +24,7 @@
                       	m.Nazwa AS Model,
                         pr.Nazwa AS Producent,
                         t.Nazwa AS Typ,
-                      	k.Service_tag,
+                      	k.Service_tag AS Service_tag,
                       	s.Nazwa AS System,
                       	p.Imię AS Imię,
                         p.Nazwisko AS Nazwisko,
@@ -40,7 +40,13 @@
                                     else 'Nie'
                             END AS Kamera,
                         ms.Nazwa AS Miejsce,
-                        k.Uwagi
+                        k.Uwagi,
+                        p.Id AS PracownikId,
+                        CASE
+                            when k.Checked = 1
+                                then 'TAK'
+                                else 'NIE'
+                        END AS Checked
                       from Kompy AS k
                         left join Modele AS m on [m].[Id] = [k].[ModelId]
                       	left join Systemy AS s on [s].[Id] = [k].[SystemId]
@@ -77,7 +83,7 @@
         print '</tr>';
         print '<tr>';
         print '<th width="120">Pracownik</th>';
-        print '<td><name="Pracownik">' . $row["Imię"] . " " . $row["Nazwisko"] .'</td>';
+        print " <td><a href='view_persons.php?Id=".$row['PracownikId']."'>" . $row["Imię"] . " " . $row["Nazwisko"] . "</a><br>";
         print '</tr>';
         print '<tr>';
         print '<th width="120">Data Wydania</th>';
@@ -98,6 +104,10 @@
         print '<tr>';
         print '<th width="120">Uwagi</th>';
         print '<td><name="Uwagi">' . $row['Uwagi'] . '</td>';
+        print '</tr>';
+        print '<tr>';
+        print '<th width="120">Check</th>';
+        print '<td><name="Checked">' . $row['Checked'] . '</td>';
         print '</tr>';
 
     }

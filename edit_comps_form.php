@@ -31,7 +31,8 @@
                         k.Mikrofon AS Mikrofon,
                         k.Kamera AS Kamera,       
                         ms.Nazwa AS Miejsce,
-                        k.Uwagi
+                        k.Uwagi,
+                        k.Checked
                       from Kompy AS k
                         left join Modele AS m on [m].[Id] = [k].[ModelId]
                       	left join Systemy AS s on [s].[Id] = [k].[SystemId]
@@ -60,6 +61,12 @@
         else{
             $cam_select2= 'selected';
         }
+        if($row["Checked"] == 1) {
+            $chk_select1 = 'selected';
+        }
+        else {
+            $chk_select2 = 'selected';
+        }
 
         print '<tr>';
         print '<th width="120">Id</th>';
@@ -75,10 +82,12 @@
         $sql1 = "select
                                   	m.Id as Id,
                                   	m.Nazwa as Nazwa,
+                                    p.Nazwa as Producent,
                                   	k.Id as komp_id
                                    from Modele as m
                                   	left join (select * from Kompy
-				                          where Id = $komp_id) as k ON k.ModelId = m.Id";
+				                          where Id = $komp_id) as k ON k.ModelId = m.Id
+                                    left join Producenci as p on p.Id = m.ProducentId";
         if ($stmt1 = $pdo->prepare($sql1)) {
             if ($stmt1->execute()) {
             }
@@ -93,7 +102,8 @@
             }
             $model = $row_st['Nazwa'];
             $model_id = $row_st['Id'];
-            print "<option value='$model_id' $selected>$model</option>";
+            $producent = $row_st['Producent'];
+            print "<option value='$model_id' $selected>$producent $model</option>";
         }
         print '</select></td>';
         print '</tr>';
@@ -111,7 +121,8 @@
                         k.Id as komp_id
                         from Systemy as s
                             left join (select * from Kompy
-                                    where Id = $komp_id) as k ON k.SystemId = s.Id";
+                                    where Id = $komp_id) as k ON k.SystemId = s.Id
+                        order by Nazwa";
                 if ($stmt2 = $pdo->prepare($sql2)){
                     if ($stmt2->execute()) {
                     }
@@ -132,6 +143,7 @@
         print '<tr>';
         print '<th width="120">Pracownik</th>';
         print '<td><select name="PracownikId">';
+        print "<option value=null>*PUSTE*</option>";
         $sql3 = "select
                         p.Id as Id,
                         p.Nazwisko as Nazwisko,
@@ -155,7 +167,6 @@
         $pracownik = $row_st['Nazwisko'];
         $pracownik_imie = $row_st['Imię'];
         $pracownik_id = $row_st['Id'];
-
         print "<option value='$pracownik_id' $selected>$pracownik $pracownik_imie</option>";
             }
         print '</select></td>';
@@ -180,12 +191,45 @@
         print '</tr>';
         print '<tr>';
         print '<th width="120">Miejsce</th>';
-        print '<td><input type="text" name="MiejsceId" size="100" value=' . $row['Miejsce'] . ' ></td>';
+        print '<td><select name="MiejsceId">';
+        print "<option value=null>*PUSTE*</option>";
+        $sql4 = "select
+                        m.Id as Id,
+                        m.Nazwa as Nazwa,
+                        k.Id as komp_id
+                        from Miejsca as m
+                            left join (select * from Kompy
+                                    where Id = $komp_id) as k ON k.MiejsceId = m.Id
+                        order by Nazwa";
+                if ($stmt4 = $pdo->prepare($sql4)){
+                    if ($stmt4->execute()) {
+                    }
+                }
+            while ($row_st = $stmt4->fetch(PDO::FETCH_ASSOC)) {
+                if(empty($row_st['komp_id']) or $row_st['komp_id'] == ''){
+                    $selected = '';
+                    }
+                    else {
+                    $selected = 'selected';
+        }
+        $miejsce = $row_st['Nazwa'];
+        $miejsce_id = $row_st['Id'];
+        print "<option value='$miejsce_id' $selected>$miejsce</option>";
+            }
+        print '</select></td>';
         print '</tr>';
         print '<tr>';
         print '<th width="120">Uwagi</th>';
         print '<td><input type="text" name="Uwagi" size="100" value="' . $row['Uwagi'] . '" ></td>';
         print '</tr>';
+        print '<tr>';
+        print '<th width="120">Check</th>';
+        print '<td><select name="Checked">';
+        print "<option value='1' $chk_select1>TAK</option>";
+        print "<option value='0' $chk_select2>NIE</option>";
+        print '</select></td>';
+        print '</tr>';
+
 
     }
     print_r($row);

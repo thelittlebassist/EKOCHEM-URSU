@@ -31,6 +31,7 @@ include('core/css.php');
             <th>Miejsce
             <th>System
             <th>Uwagi
+            <th>Check</th>
             <th>Opcje
         </tr>
         </thead>
@@ -45,7 +46,13 @@ include('core/css.php');
                        p.Nazwisko,
                        m.Nazwa AS Miejsce,
                        s.Nazwa AS System,
-                       k.Uwagi
+                       k.Uwagi,
+                       p.Id AS PracownikId,
+                       CASE
+                            when k.Checked = 1
+                                then 'TAK'
+                                else 'NIE'
+                        END AS Checked
                     from Kompy AS k
                     left join Miejsca AS m ON m.Id = k.MiejsceId
                     left join Pracownicy AS p ON p.Id = k.PracownikId
@@ -57,12 +64,21 @@ include('core/css.php');
         }
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) // while there are rows
         {
+
+            if ($row['Checked'] == 'NIE') {
+                $td_class = 'class=table-danger';
+            }
+            else {
+                $td_class = 'class=table-success';
+            }
+
             print "<tr>";
             print "  <td>" . $row["Komp"] . "<br>";
-            print "  <td>" . $row["Imię"] . " " . $row["Nazwisko"] . "<br>";
+            print " <td><a href='view_persons.php?Id=".$row['PracownikId']."'>" . $row["Imię"] . " " . $row["Nazwisko"] . "</a><br>";
             print "  <td>" . $row["Miejsce"] . "<br>";
             print "  <td>" . $row["System"] . "<br>";
             print "  <td>" . $row["Uwagi"] . "<br>";
+            print "  <td $td_class>" . $row["Checked"] . "<br>";
             $delete="Czy chcesz usunąć?";
             print " <td><a class='btn btn-outline-dark btn-sm'  href='view_comps.php?Id=".$row['Id']."'>P</a>
                            <a class='btn btn-outline-dark btn-sm'  href='edit_comps_form.php?Id=".$row['Id']."'>E</a>

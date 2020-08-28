@@ -10,20 +10,35 @@
 
 
 
-    $sql = "INSERT INTO  Kompy (Nazwa, ModelId, Service_tag, SystemId,PracownikId, Data_Wydania, Mikrofon, Kamera, MiejsceId, Uwagi)
-                            Values (:Nazwa, :ModelId, :Service_tag, :SystemId, :PracownikId, :Data_Wydania, :Mikrofon, :Kamera, :MiejsceId, :Uwagi)";
+    $sql = "INSERT INTO  Kompy (Nazwa, ModelId, Service_tag, SystemId,PracownikId, Data_Wydania, Mikrofon, Kamera, MiejsceId, Uwagi, Checked)
+                            Values (:Nazwa, :ModelId, :Service_tag, :SystemId, :PracownikId, :Data_Wydania, :Mikrofon, :Kamera, :MiejsceId, :Uwagi, :Checked)";
+
+    if ($_POST['PracownikId'] == 'null') {
+        $PracownikId = null;
+    }
+    else {
+        $PracownikId = $_POST['PracownikId'];
+    }
+
+    if ($_POST['MiejsceId'] == 'null') {
+        $MiejsceId = null;
+    }
+    else {
+        $MiejsceId = $_POST['MiejsceId'];
+    }
 
     $data = [
         'Nazwa' => $_POST['Nazwa'],
         'ModelId' => $_POST['ModelId'],
         'Service_tag' => $_POST['Service_tag'],
         'SystemId' => $_POST['SystemId'],
-        'PracownikId' => $_POST['PracownikId'],
+        'PracownikId' => $PracownikId,
         'Data_Wydania' => $_POST['Data_Wydania'],
         'Mikrofon' => $_POST['Mikrofon'],
         'Kamera' => $_POST['Kamera'],
-        'MiejsceId' => $_POST['MiejsceId'],
-        'Uwagi' => $_POST['Uwagi']
+        'MiejsceId' => $MiejsceId,
+        'Uwagi' => $_POST['Uwagi'],
+        'Checked' => $_POST['Checked']
     ];
 
     try {

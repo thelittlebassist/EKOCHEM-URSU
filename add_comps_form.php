@@ -28,8 +28,10 @@
             print '<option value="wyb">--WYBIERZ--</option>';
             $sql1 = "select
                                   	m.Id as Id,
-                                  	m.Nazwa as Nazwa
-                                   from Modele as m
+                                  	m.Nazwa as Nazwa,
+                                    p.Nazwa as Producent
+                                   from Modele as m 
+                                        left join Producenci as p on p.Id = m.ProducentId
                                   	";
             if ($stmt1 = $pdo->prepare($sql1)) {
                 if ($stmt1->execute()) {
@@ -39,7 +41,8 @@
             {
                 $model = $row_st['Nazwa'];
                 $model_id = $row_st['Id'];
-                print "<option value='$model_id'>$model</option>";
+                $producent = $row_st['Producent'];
+                print "<option value='$model_id'>$producent $model</option>";
             }
             print '</select></td>';
             print '</tr>';
@@ -55,6 +58,7 @@
                         s.Id as Id,
                         s.Nazwa as Nazwa
                         from Systemy as s
+                        order by Nazwa
                             ";
             if ($stmt2 = $pdo->prepare($sql2)){
                 if ($stmt2->execute()) {
@@ -71,6 +75,7 @@
             print '<th width="120">Pracownik</th>';
             print '<td><select name="PracownikId">';
             print '<option value="wyb">--WYBIERZ--</option>';
+            print "<option value=null>*PUSTE*</option>";
             $sql3 = "select
                         p.Id as Id,
                         p.Nazwisko as Nazwisko,
@@ -113,8 +118,27 @@
             print '</tr>';
             print '<tr>';
             print '<th width="120">Miejsce</th>';
-            print '<td><input type="text" name="MiejsceId" size="100"></td>';
+            print '<td><select name="MiejsceId">';
+            print '<option value="wyb">--WYBIERZ--</option>';
+            print "<option value=null>*PUSTE*</option>";
+            $sql4 = "select
+                        m.Id as Id,
+                        m.Nazwa as Nazwa
+                        from Miejsca as m
+                        order by Nazwa
+                            ";
+            if ($stmt4 = $pdo->prepare($sql4)){
+                if ($stmt4->execute()) {
+                }
+            }
+            while ($row_st = $stmt4->fetch(PDO::FETCH_ASSOC)) {
+                $miejsce = $row_st['Nazwa'];
+                $miejsce_id = $row_st['Id'];
+                print "<option value='$miejsce_id'>$miejsce</option>";
+            }
+            print '</select></td>';
             print '</tr>';
+            print '<tr>';
             print '<tr>';
             print '<th width="120">Uwagi</th>';
             print '<td><input type="text" name="Uwagi" size="100"></td>';
