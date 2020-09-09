@@ -33,11 +33,14 @@
                       	p.Telefon,
                       	sp.Nazwa AS Spółka,
                       	p.Uwagi,
-                      	d.Nazwa AS Dział
+                      	d.Nazwa AS Dział,
+                        k.Id AS KompId,
+                        k.Nazwa As Komp
                       from Pracownicy AS p
                         inner join Stanowiska AS s on [s].[Id] = [p].[StanowiskoId]
                       	inner join Spolki AS sp on [sp].[Id] = [p].[SpółkaId]
                       	inner join Dzialy AS d on [d].[Id] = [p].[DziałId]
+                        left join Kompy AS k on k.PracownikId = p.Id
                     where p.Id = :Id;";
               if ($stmt = $pdo->prepare($sql)) {
                  if ($stmt->execute(array(':Id'=>trim($_GET['Id'])))) {
@@ -81,6 +84,11 @@
                print '<th width="120">Uwagi</th>';
                print '<td><name="Uwagi">' . $row['Uwagi'] . '</td>';
                print '</tr>';
+               print '<tr>';
+               print '<th width="120">Komp</th>';
+               print '<td><name="Komp">' . $row['Komp'] . '</td>';
+               print '</tr>';
+
 
               }
               print_r($row);
