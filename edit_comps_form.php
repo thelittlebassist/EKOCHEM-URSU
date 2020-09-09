@@ -87,7 +87,9 @@
                                    from Modele as m
                                   	left join (select * from Kompy
 				                          where Id = $komp_id) as k ON k.ModelId = m.Id
-                                    left join Producenci as p on p.Id = m.ProducentId";
+                                    left join Producenci as p on p.Id = m.ProducentId
+                                    Order by Producent, Nazwa
+                                    ";
         if ($stmt1 = $pdo->prepare($sql1)) {
             if ($stmt1->execute()) {
             }

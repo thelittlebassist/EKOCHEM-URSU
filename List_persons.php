@@ -29,6 +29,7 @@
           <th>Imię
           <th>Nazwisko
           <th>Stanowisko
+          <th>Komp</th>
           <th>Aktywny
           <th>Opcje
         	</tr>
@@ -47,9 +48,12 @@
                         then 'Aktywny'
                         else 'Nieaktywny'
                       END
-                      AS Aktywny
+                      AS Aktywny,
+                        k.Nazwa AS Komp,
+                        k.Id AS KompId
                     from Pracownicy AS p
                     inner join Stanowiska AS s ON s.Id = p.StanowiskoId
+                    left join Kompy as K on k.PracownikId = p.Id
 
                     order by p.Nazwisko;";
               if ($stmt = $pdo->prepare($sql)) {
@@ -62,6 +66,7 @@
                print "  <td>" . $row["Imię"] . "<br>";
                print "  <td>" . $row["Nazwisko"] . "<br>";
                print "  <td>" . $row["Stanowisko"] . "<br>";
+               print "  <td><a href='view_comps.php?Id=" . $row["KompId"] . "'>" . $row["Komp"] . "</a><br>";
                print "  <td>" . $row["Aktywny"] . "<br>";
                   $delete="Czy chcesz usunąć?";
                print " <td><a class='btn btn-outline-dark btn-sm'  href='view_persons.php?Id=".$row['Id']."'>P</a>

@@ -32,6 +32,7 @@
                                     p.Nazwa as Producent
                                    from Modele as m 
                                         left join Producenci as p on p.Id = m.ProducentId
+                                    order by Producent, Nazwa
                                   	";
             if ($stmt1 = $pdo->prepare($sql1)) {
                 if ($stmt1->execute()) {
