@@ -18,7 +18,7 @@
 
 
             # $sql = "select * from Faktury where NumerFakt = :NumerFakt";
-            $sql = "select
+            $sql = "select distinct 
                       	p.Id,
                       	p.Imię,
                       	p.Nazwisko,
@@ -34,8 +34,14 @@
                       	sp.Nazwa AS Spółka,
                       	p.Uwagi,
                       	d.Nazwa AS Dział,
-                        k.Id AS KompId,
-                        k.Nazwa As Komp
+                    replace(replace(replace(SUBSTRING (
+		            (
+                        select '<a href=view_comps.php?Id='+cast(k.Id as char(2))+'>'+k.Nazwa+'</a><br>' as [text()]
+                        from Kompy as k
+                        where k.PracownikId = p.Id
+                        order by k.Nazwa
+                        for xml path('')
+		            ), 2, 1000),'&lt;','<'),'&gt;', '>'),'lt;','<') [Komp]
                       from Pracownicy AS p
                         inner join Stanowiska AS s on [s].[Id] = [p].[StanowiskoId]
                       	inner join Spolki AS sp on [sp].[Id] = [p].[SpółkaId]
@@ -109,5 +115,59 @@
                   }
             ?>
     </div>
+   <div class="container-fluid">
+       <table id="header-fixed" border="1" style="font-size:14px" class="table table-striped table-hover tableFixHead table-sm">
+           <thead class="thead-dark">
+           <tr>
+               <th>Data
+               <th>Zdarzenie
+               <th>Komp
+               <th>Opis
+           </tr>
+           </thead>
+           <!-- END NAGŁÓWEK TABELI -->
+
+           <div>
+               <h5 align="center">Historia</h5>
+           </div>
+
+           <?php
+
+           $sql = "select
+	                   h.Id AS Id,
+                       h.Data,
+                       z.Nazwa AS Zdarzenie,
+                       k.Nazwa AS Komp,
+                       p.Imię,
+                       p.Nazwisko,
+                       h.Opis,
+                       h.PracownikId,
+                       k.Id AS KompId
+                    from Historia AS h
+                    left join Pracownicy AS p ON p.Id = h.PracownikId
+                    left join Kompy as k on k.Id = h.KompId
+                    left join Zdarzenie as z on z.Id = h.ZdarzenieId
+                    where h.PracownikId = :Id
+                    order by h.Data, z.Nazwa";
+           if ($stmt = $pdo->prepare($sql)) {
+               if ($stmt->execute(array(':Id'=>trim($_GET['Id'])))) {
+               }
+           }
+           while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) // while there are rows
+           {
+               print "<tr>";
+               print "  <td>" . $row["Data"] . "<br>";
+               print "  <td>" . $row["Zdarzenie"] . "<br>";
+               print "  <td><a href='view_comps.php?Id=". $row["KompId"]  ."'>" . $row["Komp"] . "</a><br>";
+               print "  <td>" . $row["Opis"] . "<br>";
+               print "</tr>";
+           }
+           print_r($row);
+           sqlsrv_close($conn);
+           ?>
+       </table>
+
+
+
   </body>
 </html>

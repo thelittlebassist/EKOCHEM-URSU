@@ -38,24 +38,29 @@
 
         <?php
 
-            $sql = "select
-	                   p.Id,
-                       p.Imię,
-                       p.Nazwisko,
-                       s.Nazwa AS Stanowisko,
+            $sql = "select distinct 
+                p.Id,
+				p.Imię,
+				p.Nazwisko,
+                s.Nazwa AS Stanowisko,
                        CASE
                         when p.Aktywny = 1
                         then 'Aktywny'
                         else 'Nieaktywny'
-                      END
-                      AS Aktywny,
-                        k.Nazwa AS Komp,
-                        k.Id AS KompId
-                    from Pracownicy AS p
-                    inner join Stanowiska AS s ON s.Id = p.StanowiskoId
-                    left join Kompy as K on k.PracownikId = p.Id
-
-                    order by p.Nazwisko;";
+                      END AS Aktywny,
+		        replace(replace(replace(SUBSTRING (
+		            (
+                        select '<a href=view_comps.php?Id='+cast(k.Id as char(2))+'>'+k.Nazwa+'</a><br>' as [text()]
+                        from Kompy as k
+                        where k.PracownikId = k2.PracownikId
+                        order by k.Nazwa
+                        for xml path('')
+		            ), 2, 1000),'&lt;','<'),'&gt;', '>'),'lt;','<') [Komp]
+	            from Pracownicy AS p
+		        left join Kompy as k2 on k2.PracownikId = p.Id
+		        left join Stanowiska as s on s.Id = p.StanowiskoId
+                where p.Aktywny = 1
+		        order by p.Nazwisko;";
               if ($stmt = $pdo->prepare($sql)) {
                  if ($stmt->execute()) {
                   }
@@ -66,7 +71,8 @@
                print "  <td>" . $row["Imię"] . "<br>";
                print "  <td>" . $row["Nazwisko"] . "<br>";
                print "  <td>" . $row["Stanowisko"] . "<br>";
-               print "  <td><a href='view_comps.php?Id=" . $row["KompId"] . "'>" . $row["Komp"] . "</a><br>";
+               print "  <td>" . $row["Komp"] . "<br>";
+               // print "  <td><a href='view_comps.php?Id=" . $row["KompId"] . "'>" . $row["Komp"] . "</a><br>";
                print "  <td>" . $row["Aktywny"] . "<br>";
                   $delete="Czy chcesz usunąć?";
                print " <td><a class='btn btn-outline-dark btn-sm'  href='view_persons.php?Id=".$row['Id']."'>P</a>
