@@ -129,5 +129,58 @@
     }
     ?>
 </div>
+
+<div class="container-fluid">
+    <table id="header-fixed" border="1" style="font-size:14px" class="table table-striped table-hover tableFixHead table-sm">
+        <thead class="thead-dark">
+        <tr>
+            <th>Data
+            <th>Zdarzenie
+            <th>Pracownik
+            <th>Opis
+        </tr>
+        </thead>
+        <!-- END NAGŁÓWEK TABELI -->
+
+        <div>
+            <h5 align="center">Historia</h5>
+        </div>
+
+        <?php
+
+        $sql = "select
+	                   h.Id AS Id,
+                       h.Data,
+                       z.Nazwa AS Zdarzenie,
+                       k.Nazwa AS Komp,
+                       p.Imię,
+                       p.Nazwisko,
+                       h.Opis,
+                       h.PracownikId,
+                       k.Id AS KompId
+                    from Historia AS h
+                    left join Pracownicy AS p ON p.Id = h.PracownikId
+                    left join Kompy as k on k.Id = h.KompId
+                    left join Zdarzenie as z on z.Id = h.ZdarzenieId
+                    where k.Id = :Id
+                    order by h.Data, z.Nazwa";
+        if ($stmt = $pdo->prepare($sql)) {
+            if ($stmt->execute(array(':Id'=>trim($_GET['Id'])))) {
+            }
+        }
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) // while there are rows
+        {
+            print "<tr>";
+            print "  <td>" . $row["Data"] . "<br>";
+            print "  <td>" . $row["Zdarzenie"] . "<br>";
+            print "  <td><a href='view_persons.php?Id=". $row['PracownikId'] ."'>" . $row["Imię"] . " " . $row["Nazwisko"] . "</a><br>";
+            print "  <td>" . $row["Opis"] . "<br>";
+            print "</tr>";
+        }
+        print_r($row);
+        sqlsrv_close($conn);
+        ?>
+    </table>
+
 </body>
 </html>

@@ -73,7 +73,7 @@ include('core/css.php');
             }
 
             print "<tr>";
-            print "  <td>" . $row["Komp"] . "<br>";
+            print "  <td><a href='view_comps.php?Id=".$row['Id']."'>" . $row["Komp"] . "</a><br>";
             print " <td><a href='view_persons.php?Id=".$row['PracownikId']."'>" . $row["Imię"] . " " . $row["Nazwisko"] . "</a><br>";
             print "  <td>" . $row["Miejsce"] . "<br>";
             print "  <td>" . $row["System"] . "<br>";
