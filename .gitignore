@@ -1,4 +1,6 @@
 config.php
+core/FPDF
+core/TFPDF
 core/bt4
 IMAGES
 .idea
