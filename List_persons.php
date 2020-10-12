@@ -68,8 +68,8 @@
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) // while there are rows
               {
                print "<tr>";
-               print "  <td>" . $row["Imię"] . "<br>";
-               print "  <td>" . $row["Nazwisko"] . "<br>";
+               print "  <td><a href='view_persons.php?Id=" . $row['Id'] . "'>" . $row["Imię"] . "<br>";
+               print "  <td><a href='view_persons.php?Id=" . $row['Id'] . "'>" . $row["Nazwisko"] . "<br>";
                print "  <td>" . $row["Stanowisko"] . "<br>";
                print "  <td>" . $row["Komp"] . "<br>";
                // print "  <td><a href='view_comps.php?Id=" . $row["KompId"] . "'>" . $row["Komp"] . "</a><br>";

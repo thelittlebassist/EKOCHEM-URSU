@@ -20,7 +20,9 @@
 
         print '<tr>';
         print '<th width="120">Data</th>';
-        print '<td><input type="text" name="Data" size="100"></td>';
+        $date_now = date("Y-m-d");
+        print "<td><input type='text' name='Data' size='100' value='$date_now'>";
+        print '</td>';
         print '</tr>';
         print '<tr>';
         print '<th width="120">Typ zdarzenia</th>';
