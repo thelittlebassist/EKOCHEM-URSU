@@ -1,16 +1,18 @@
 <?php
+// USTAWIENIA
 require('core/TFPDF/tfpdf.php');
 include('core/config.php');
 $pdf = new tFPDF();
 $pdf->AddPage();
-
 $pdf->AddFont('DejaVu','','DejaVuSansCondensed.ttf',true);
 $pdf->SetFont('DejaVu','',10);
-$date_now = date("Y-m-d");
 
+//Tytuł tabeli
 $pdf->Cell(180,10,'WYPOSAŻENIE PRACOWNIKÓW - KOMPUTERY NIESTACJONARNE', 0,1,'C');
+$date_now = date("Y-m-d");
 $pdf->Cell(180,10, $date_now , 0,1,'C');
 
+//Nagłówek tabeli
 $fill = true;
 $pdf->SetFillColor(192, 192, 192);
 $pdf->Cell(40, 10, 'NAZWA', 1, 0, 'C', $fill);
@@ -18,6 +20,7 @@ $pdf->Cell(60, 10, 'PRACOWNIK', 1, 0, 'C', $fill);
 $pdf->Cell(40, 10, 'MODEL', 1, 0, 'C', $fill);
 $pdf->Cell(40, 10, 'DATA WYDANIA', 1, 1, 'C', $fill);
 
+//Treść tabeli - zapytanie do bazy
 $sql = "select 
             k.Nazwa, 
             m.Lista, 
@@ -35,6 +38,7 @@ if ($stmt = $pdo->prepare($sql)) {
     if ($stmt->execute()) {
     }
 }
+//Treść tabeli
 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) // while there are rows
 {
     $pdf->Cell(40, 8, $row['Nazwa'], 1, 0, 'C');

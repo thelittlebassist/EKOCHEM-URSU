@@ -19,7 +19,7 @@ include('core/css.php');
 
 <form>
     <input class="btn btn-dark" type="button" value="Dodaj komputer" onclick="window.location.href='http://localhost/EKOCHEM-URSU/add_comps_form.php'" />
-    <input class="btn btn-dark" type="button" value="Drukuj listę laptopów w użyciu" onclick="window.location.href='http://localhost/EKOCHEM-URSU/pdf_laptoplist.php'" />
+    <input class="btn btn-dark" type="button" value="Drukuj listę laptopów w użyciu" onclick="window.location.href='print_pdf_laptoplist.php'" />
 </form>
 
 <!-- NAGŁÓWEK TABELI -->
