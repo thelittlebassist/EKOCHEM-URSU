@@ -18,7 +18,8 @@
 								Mail = :Mail,
 								Telefon = :Telefon,
 								SpółkaId = :SpolkaId,
-								Uwagi = :Uwagi
+								Uwagi = :Uwagi,
+                                PlecId = :PlecId
 							WHERE Id = :Id";
 
 				$data = [
@@ -31,7 +32,8 @@
 					'Telefon' => $_POST['Telefon'],
 					'SpolkaId' => $_POST['SpółkaId'],
 					'Uwagi' => $_POST['Uwagi'],
-					'DzialId' => $_POST['DziałId']
+					'DzialId' => $_POST['DziałId'],
+                    'PlecId' => $_POST['PlecId']
 				];
 
 				try {

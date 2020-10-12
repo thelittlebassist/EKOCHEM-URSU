@@ -27,11 +27,14 @@
                       	p.Telefon,
                       	sp.Nazwa AS Spółka,
                       	p.Uwagi,
-                      	d.Nazwa AS Dział
+                      	d.Nazwa AS Dział,
+                        pl.Nazwa AS Płeć
                       from Pracownicy AS p
                         inner join Stanowiska AS s on [s].[Id] = [p].[StanowiskoId]
                       	inner join Spolki AS sp on [sp].[Id] = [p].[SpółkaId]
                       	inner join Dzialy AS d on [d].[Id] = [p].[DziałId]
+                        inner join Plec AS pl on [pl].[Id] = [p].[PlecId]
+
                     where p.Id = :Id;";
               if ($stmt = $pdo->prepare($sql)) {
                  if ($stmt->execute(array(':Id'=>trim($_GET['Id'])))) {
@@ -158,6 +161,34 @@
                print '<tr>';
                print '<th width="120">Uwagi</th>';
                print '<td><input type="text" size="100" name="Uwagi" value="' . $row['Uwagi'] . '"></td>';
+               print '</tr>';
+               print '<tr>';
+               print '<th width="120">Płeć</th>';
+               print '<td><select name="PlecId">';
+                         $sql4 = "select
+                                    pl.Id as Id,
+                                    pl.Nazwa as Nazwa,
+                                    p.Id as prac_id
+                                   from Plec as pl
+                                    left join (select * from Pracownicy
+                                  where Id = $prac_id) as p ON p.PlecId = pl.Id";
+                         if ($stmt4 = $pdo->prepare($sql4)) {
+                            if ($stmt4->execute()) {
+                             }
+                         }
+                       while ($row_pl = $stmt4->fetch(PDO::FETCH_ASSOC)) // while there are rows
+                         {
+                          if(empty($row_pl['prac_id']) or $row_pl['prac_id'] == ''){
+                            $selected = '';
+                          }
+                          else {
+                            $selected = 'selected';
+                          }
+                          $plec = $row_pl['Nazwa'];
+                          $plec_id = $row_pl['Id'];
+                          echo "<option value='$plec_id' $selected>$plec</option>";
+                         }
+               print '</select></td>';
                print '</tr>';
                 }
 

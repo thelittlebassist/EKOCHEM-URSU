@@ -90,6 +90,25 @@
           ?>
         </select></td>
       </tr>
+         <tr>
+        <th width="120">Płeć</th>
+        <td><select name="PłećId">
+                <option value='wyb'>--WYBIERZ--</option>
+          <?php
+              $sql = "select * from Plec";
+                if ($stmt = $pdo->prepare($sql)) {
+                   if ($stmt->execute()) {
+                    }
+                }
+              while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) // while there are rows
+                {
+                 $plec = $row['Nazwa'];
+                 $plec_id = $row['Id'];
+                 echo "<option value='$plec_id'>$plec</option>";
+                }
+          ?>
+        </select></td>
+      </tr>
       <tr>
         <th width="120">Uwagi</th>
         <td width="238"><input type="text" name="Uwagi" size="100"></td>

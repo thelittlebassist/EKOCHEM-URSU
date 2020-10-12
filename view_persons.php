@@ -34,6 +34,11 @@
                       	sp.Nazwa AS Spółka,
                       	p.Uwagi,
                       	d.Nazwa AS Dział,
+                        CASE
+                            when p.PlecId = 1
+                            then 'Mężczyzna'
+                            else 'Kobieta'
+                        END as Płeć,
                     replace(replace(replace(SUBSTRING (
 		            (
                         select '<a href=view_comps.php?Id='+cast(k.Id as char(2))+'>'+k.Nazwa+'</a><br>' as [text()]
@@ -93,6 +98,10 @@
                print '<tr>';
                print '<th width="120">Komp</th>';
                print '<td><name="Komp">' . $row['Komp'] . '</td>';
+               print '</tr>';
+               print '<tr>';
+               print '<th width="120">Płeć</th>';
+               print '<td><name="Płeć">' . $row['Płeć'] . '</td>';
                print '</tr>';
 
 

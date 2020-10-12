@@ -8,9 +8,9 @@
 			<?php
 				include('core/config.php');
 
-				$sql = "INSERT INTO Pracownicy (Imię, Nazwisko, StanowiskoId, Aktywny, Mail, Telefon, SpółkaId, Uwagi, DziałId)
+				$sql = "INSERT INTO Pracownicy (Imię, Nazwisko, StanowiskoId, Aktywny, Mail, Telefon, SpółkaId, Uwagi, DziałId, PlecId)
 						VALUES
-						(:Imie, :Nazwisko, :StanowiskoId, :Aktywny, :Mail, :Telefon, :SpolkaId, :Uwagi, :DzialId)";
+						(:Imie, :Nazwisko, :StanowiskoId, :Aktywny, :Mail, :Telefon, :SpolkaId, :Uwagi, :DzialId, :PlecId)";
 				$data = [
 					'Imie' => $_POST['Imię'],
 					'Nazwisko' => $_POST['Nazwisko'],
@@ -20,7 +20,8 @@
 					'Telefon' => $_POST['Telefon'],
 					'SpolkaId' => $_POST['SpółkaId'],
 					'Uwagi' => $_POST['Uwagi'],
-					'DzialId' => $_POST['DziałId']
+					'DzialId' => $_POST['DziałId'],
+                    'PlecId' => $_POST['PłećId']
 				];
 				try {
             $pdo->prepare($sql)->execute($data);
