@@ -126,6 +126,7 @@
     {
         print "<a class='btn btn-dark btn-sm'  href='edit_comps_form.php?Id=".$row["Id"]."'>Edytuj</a>";
         print "<a class='btn btn-outline-dark btn-sm'  href='List_comps.php'>Powrót</a>";
+        print "<a class='btn btn-outline-dark btn-sm'  href='print_umowa_wydania.php?Id=".$row["Id"]."'>Umowa</a>";
     }
     ?>
 </div>
