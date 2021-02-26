@@ -120,9 +120,31 @@
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) // while there are rows
                   {
                    print "<a class='btn btn-dark btn-sm'  href='edit_persons_form.php?Id=".$row["Id"]."'>Edytuj</a>";
+                   print "<a class='btn btn-outline-dark btn-sm'  href='add_events_form.php'>Dodaj Zdarzenie</a>";
                    print "<a class='btn btn-outline-dark btn-sm'  href='List_persons.php'>Powrót</a>";
+                   //print "<a class='btn btn-outline-dark btn-sm'  href='print_vcard.php?Id=".$row["Id"]."'>Wizytówka</a>";
+                   print "<a class='btn btn-outline-dark btn-sm'  data-toggle='modal' data-target='#myModal'>Wizytówka</a>";
                   }
             ?>
+
+        <div class="modal" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <?php
+                    include('print_vcard.php');
+                    if ($stmt = $pdo->prepare($sql)) {
+                        if ($stmt->execute(array(':Id'=>trim($_GET['Id'])))) {
+                        }
+                    }
+                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) // while there are rows
+                    {
+                        print "<a class='btn btn-dark btn-lg'  href='WIZYTÓWKI/" . $row["Mail"] . ".png' download='Wizytówka QR - " . $row['Imię'] . "_" . $row['Nazwisko'] . "'>Pobierz</a>";
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+
     </div>
    <div class="container-fluid">
        <table id="header-fixed" border="1" style="font-size:14px" class="table table-striped table-hover tableFixHead table-sm">
@@ -175,8 +197,6 @@
            sqlsrv_close($conn);
            ?>
        </table>
-
-
 
   </body>
 </html>
