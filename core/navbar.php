@@ -31,6 +31,9 @@
           <li class="nav-item">
             <a class="nav-link" href="https://trello.com/b/MH3jpE68/ekochem-30">Trello</a>
           </li>
+            <li class="nav-item">
+            <a class="nav-link" href="http://localhost/EKOCHEM-URSU/IMAGES/Ekochem Sieć - Warstwa 2 & 1.html">Mapa Sieci</a>
+          </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Akcje</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
