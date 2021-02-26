@@ -30,7 +30,8 @@
                 echo "<option value='$dostawca'>$dostawca</option>";
               }
              ?>
-           </select></td>
+           </select>
+              <a class='btn btn-outline-dark btn-sm'  href='Add_supplier_form.php'>Dodaj dostawcę</a></td>
          </tr>
         <tr>
           <th width="120">Numer Zamówienia Dostawcy</th>
@@ -38,13 +39,24 @@
           </tr>
         <tr>
           <th width="120">Data Zamówienia</th>
-          <td><input type="text" name="DataZamowienia" size="10"></td>
+            <?php
+            $date_now = date("Y-m-d");
+            print "<td><input type='text' name='DataZamowienia' size='10' value='$date_now'>";
+            ?>
           </tr>
-        <tr>
-          <th width="120">Status Zamówienia</th>
-          <td><input type="text" name="StatusZam" size="100"></td>
+          <tr>
+              <th width="120">Status Zamówienia</th>
+              <td><select name="StatusZam">
+                      <option value='wyb'>--WYBIERZ--</option>
+                      <option value='Zakończone'>Zakończone</option>
+                      <option value='Zamówione/Czeka na zapłatę'>Zamówione/Czeka na zapłatę</option>
+                      <option value='Zamówione/Pobranie'>Zamówione/Pobranie</option>
+                      <option value='Zamówione/Czekam na pro-formę'>Zamówione/Czekam na pro-formę</option>
+                      <option value='Anulowane'>Anulowane</option>
+                  </select>
+              </td>
           </tr>
-        <tr>
+          <tr>
           <th width="120">Data Dostawy</th>
           <td><input type="text" name="DataDost" size="10"></td>
           </tr>
