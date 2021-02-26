@@ -126,6 +126,7 @@
     {
         print "<a class='btn btn-dark btn-sm'  href='edit_comps_form.php?Id=".$row["Id"]."'>Edytuj</a>";
         print "<a class='btn btn-outline-dark btn-sm'  href='List_comps.php'>Powrót</a>";
+        print "<a class='btn btn-outline-dark btn-sm'  href='add_events_form.php'>Dodaj Zdarzenie</a>";
         print "<a class='btn btn-outline-dark btn-sm'  href='print_umowa_wydania.php?Id=".$row["Id"]."'>Umowa</a>";
     }
     ?>
@@ -164,7 +165,7 @@
                     left join Kompy as k on k.Id = h.KompId
                     left join Zdarzenie as z on z.Id = h.ZdarzenieId
                     where k.Id = :Id
-                    order by h.Data, z.Nazwa";
+                    order by h.Data, h.Id";
         if ($stmt = $pdo->prepare($sql)) {
             if ($stmt->execute(array(':Id'=>trim($_GET['Id'])))) {
             }
